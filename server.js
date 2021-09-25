@@ -16,13 +16,17 @@ if (!process.env.DISABLE_XORIGIN) {
   });
 }
 
+app.use('/public', express.static(__dirname + '/public')); 
+
 app.get('/', (req, res) => {
   let absolutePath = __dirname + '/views/index.html'
   res.sendFile(absolutePath); 
   // res.send('Hello Express'); 
 }); 
 
-app.use('/public', express.static(__dirname + '/public')); 
+app.get('/json', (req,res)=>{
+  res.json({"message": "Hello json"});
+});
 
 
 var port = process.env.PORT || 3000;
