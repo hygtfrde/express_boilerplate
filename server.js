@@ -18,9 +18,11 @@ if (!process.env.DISABLE_XORIGIN) {
 
 app.get('/', (req, res) => {
   let absolutePath = __dirname + '/views/index.html'
-  // res.send('Hello Express'); 
   res.sendFile(absolutePath); 
+  // res.send('Hello Express'); 
 }); 
+
+app.use('/public', express.static(__dirname + '/public')); 
 
 
 var port = process.env.PORT || 3000;
