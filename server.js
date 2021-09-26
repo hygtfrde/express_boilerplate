@@ -44,6 +44,13 @@ app.get('/:word/echo', (req,res) => {
   res.json( { echo: word } )
 }); 
 
+app.get('/name', (req,res) => {
+  console.log('Query string format: ?first=firstname&last=lastname');
+  let first = req.query.first; 
+  let last = req.query.last; 
+  res.json( { name: `${first} ${last}` } )
+}); 
+
 
 var port = process.env.PORT || 3000;
 bGround.setupBackgroundApp(app, myApp, __dirname).listen(port, function(){
