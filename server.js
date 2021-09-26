@@ -2,7 +2,16 @@ var bGround = require('fcc-express-bground');
 var myApp = require('./myApp');
 require('dotenv').config(); 
 var express = require('express');
+
 var app = express();
+
+app.use('/public', express.static(__dirname + '/public')); 
+
+app.use( (req, res, next) => {
+  var userInfo = req.method + " " + req.path + " - " + req.ip;
+  console.log(userInfo);
+  next();
+}); 
 
 if (!process.env.DISABLE_XORIGIN) {
   app.use(function(req, res, next) {
@@ -16,14 +25,6 @@ if (!process.env.DISABLE_XORIGIN) {
     next();
   });
 }
-
-app.use('/public', express.static(__dirname + '/public')); 
-
-app.use( (req, res, next) => {
-  var userInfo = req.method + " " + req.path + " - " + req.ip;
-  console.log(userInfo);
-  next();
-}); 
 
 app.get('/', (req, res) => {
   let absolutePath = __dirname + '/views/index.html'

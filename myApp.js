@@ -1,7 +1,10 @@
 var express = require('express');
 var app = express();
 
-console.log('App is starting'); 
+app.use(bodyParser.urlencoded({extended: false})); 
+app.use(bodyParser.json());
+
+var bodyParser = require('body-parser'); 
 
 const middleware = (req, res, next) => {
     req.time = new Date()
