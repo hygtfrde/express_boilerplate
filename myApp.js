@@ -16,6 +16,10 @@ app.get('/now', middleware, (req,res) => {
     res.send({time: req.time}); 
 });
 
-
+app.post('/name', (req,res) => {
+    let first = req.body.first; 
+    let last = req.body.last; 
+    res.json( { name: `${first} ${last}` } );  
+}); 
 
 module.exports = app;

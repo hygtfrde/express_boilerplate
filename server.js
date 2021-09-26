@@ -49,8 +49,14 @@ app.get('/name', (req,res) => {
   console.log('Query string format: ?first=firstname&last=lastname');
   let first = req.query.first; 
   let last = req.query.last; 
-  res.json( { name: `${first} ${last}` } )
+  res.json( { name: `${first} ${last}` } ); 
 }); 
+
+// app.post('/name', (req,res) => {
+//   let first = req.body.first; 
+//   let last = req.body.last; 
+//   res.json( { name: `${first} ${last}` } );  
+// }); 
 
 
 var port = process.env.PORT || 3000;
