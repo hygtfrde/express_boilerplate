@@ -39,6 +39,11 @@ app.get('/json', (req,res)=>{
   }
 });
 
+app.get('/:word/echo', (req,res) => {
+  const { word } = req.params
+  res.json( { echo: word } )
+}); 
+
 
 var port = process.env.PORT || 3000;
 bGround.setupBackgroundApp(app, myApp, __dirname).listen(port, function(){
